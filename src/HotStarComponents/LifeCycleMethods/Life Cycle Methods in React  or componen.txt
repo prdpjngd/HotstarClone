@@ -1,0 +1,113 @@
+Life Cycle Methods in React  or component life cycle only for Class based component not
+for functional based component 
+
+
+Every React Component has a lifecycle of its own, lifecycle of a 
+component can be defined as the series of methods that are invoked in different stages
+ of the component's existence. ...
+ Mounting: Mounting is the stage of rendering the JSX returned by the render method itself.
+
+ React component is having three phases 
+ 1 : Mounting 
+     When an Instance of a component is being created or started and inserted into DOM 
+     Mounting phases Methods
+
+     1 : constructor(props) 
+            constructor is a special method in react that will get called whenever a new component is created
+            Its is Best Place for initializing State and Binding event handler like this keyword
+
+            what not to do in constructor
+            dont use setState() method in constructor 
+            dont not cause Side effect like HTTP request 
+            like window.fetch() , axios.get()
+
+     2 :  static getDerivedStateFromProps()
+          This method using rare case 
+          when the state of the component depends on changes in the props over time 
+           
+            what not to do 
+
+            dont call HTTP Request like ajax call 
+            dont use static method like this.state
+
+
+     3 : render()
+        Render Method is the Required Method in class based component 
+        Use of render method is reading state and props, return JSX 
+
+        children components life cycle method also executed here
+        it is rendering or loading every time when DOM updated
+
+        
+        what not to do 
+     do not change state or interact with DOM or Ajax calls
+
+     4 :  componentDidMount()
+              Invoked Immediately after a component and its all children
+               component have been rendered to the DOM
+              It is rendered only Once in the DOM
+              This method is Perfect place for calling Ajax calls or any 
+              http calls like network calls it cause side effect 
+              It Interact with DOM and Load Data 
+
+
+
+
+ 2 : updating 
+       when a component is being re-rendered as a result of changes to either its props or state 
+
+       METHODS 
+       static getDerivedStateFromProps , shouldComponentUpdate , render , getSnapShotBeforeUpdate and 
+       componentDidUpdate
+
+       use of These Methods 
+       1 : static getDerivedStateFromProps()
+          This method using rare case 
+          when the state of the component depends on changes in the props over time 
+          This method re-rendered very time
+            what not to do 
+
+            dont call HTTP Request like ajax call 
+            dont use static method like this.state
+
+       2 : shouldComponentUpdate(nextProp , nextState)
+              Method work for both State and Props
+              performance Optimization
+              it is comparing state and props any deep update (dom update) then only this method is rendering 
+
+              This Method allow your component to exits the update 
+              if recall same content React Does not deeply compare props by default
+              if it is new content React Does  deeply compare props by default
+
+              when prop or state is updated react assumes we need to re-rendered the content 
+              but , if the props or state have not changed , Should is  really re-rendered? NO
+
+              Preventing unnecessary renders 
+              alternative is PureComponent 
+              This one also rare life cycle hooks method
+
+       3 : render() method 
+       
+        Render Method is the Required Method in class based component 
+        Use of render method is reading state and props, return JSX 
+
+        children components life cycle method also executed here
+        it is rendering or loading every time when DOM updated
+
+        
+        what not to do 
+     do not change state or interact with DOM or Ajax calls
+
+
+       4 : getSnapShotBeforeUpdate(prevProps , prevState) 
+       Rarely Used Method 
+       its called before the changes from the Virtual DOM are to be reflected in the DOM 
+       capture some Information from DOM 
+       
+
+       5  : componentDidUpdate(prevProps , prevState , snapshot)
+       called after the render method is finished in the re-render job 
+       causes side effect like http request but not right place 
+
+
+ 3 : unMounting 
