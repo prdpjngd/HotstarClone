@@ -3,6 +3,8 @@ var admin = require("firebase-admin");
 
 // Put Your service Account Information Here --> Go to Firebase and 
 //  create  service account then Copy paste info here...
+
+// copy paste here
 var serviceAccount = {
 
 }
